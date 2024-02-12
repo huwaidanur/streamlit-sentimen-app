@@ -13,13 +13,13 @@ from nltk.probability import FreqDist
 #from utama import Utama
 #from text_processing import TextProcessing
 #from predict_sentiment import PredictSentiment
-from sklearn.feature_extraction.text import CountVectorizer
+#from sklearn.feature_extraction.text import CountVectorizer
 
 import plotly.express as px
 import plotly.graph_objs as go
 
-import seaborn as sns
-import matplotlib.pyplot as plt
+#import seaborn as sns
+#import matplotlib.pyplot as plt
 
 #tp = TextProcessing()
 #ps = PredictSentiment()
