@@ -27,6 +27,7 @@ import plotly.graph_objs as go
 # Set page title
 st.set_page_config(page_title="Portofolio Data Science", layout='wide')
 st.title("My Streamlit App")
+st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 st.write("Welcome to my Streamlit app! Di sini kamu bisa melihat hasil analisis sentimen Twitter")
 
   
@@ -42,7 +43,7 @@ if st.button("Topik : Kampanye"):
 
 
 nama_file = 'data_scraping_kampanye.csv'
-folder_path = r'D:\Data Science - Sanbercode\belajar\twitter_sentimen\app'
+folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
 
 file_path = os.path.join(folder_path, nama_file)
 data = pd.read_csv(file_path)
@@ -82,7 +83,6 @@ print('data hasil prediksi berhasil disimpan')
 data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
 print(data.columns)
 print(data.info())
-import plotly.graph_objs as go
 
 options = ["Overview","All Data", "Positive", "Negative"]
 selected_option = st.selectbox("Pilih", options)
