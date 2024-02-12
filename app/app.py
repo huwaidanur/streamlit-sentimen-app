@@ -93,20 +93,8 @@ if selected_option == "Overview":
 # = '#24d6e3'
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     with st.container():
-        st.markdown(
-            """
-            <style>
-                .css-1xkftc2 { /* Kelas untuk kontainer */
-                    width: 800px !important;
-                    height: 1200px !important;
-                }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-
         # row 1 dari 1 
-        col1, col2, col3= st.columns([20, 20, 20])
+        col1, col2 = st.columns([50, 50])
         with col1:
             word_lengths = data['cleaned_tweet'].str.len()
             # = '#24d6e3'
@@ -114,13 +102,13 @@ if selected_option == "Overview":
             
             fig.update_layout(
                 title='Jumlah Kata per Tweet',
-                xaxis_title=' Kata',
+                xaxis_title=' Jumlah Kata',
                 yaxis_title='Frekuensi',
                 bargap=0.1,
                 title_x=0.5,
-                title_font_size=20,
-                width=400,
-                height=400)
+                title_font_size=30,
+                width=800,
+                height=800)
             st.plotly_chart(fig, use_container_width=False)
 
         with col2:
@@ -133,11 +121,9 @@ if selected_option == "Overview":
                         template='plotly', width=300, height=300)
             fig.update_traces(marker=dict(line=dict(width=2, color='Black')), showlegend=False)
             fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',
-                            title_x=0.5, title_font_size=20, width=400, height=400, template='seaborn')
+                            title_x=0.5, title_font_size=30, width=800, height=800, template='seaborn')
             st.plotly_chart(fig, use_container_width=False)
 
-    with st.container(height=30, border=False):
-        pass
     st.divider()
 
 

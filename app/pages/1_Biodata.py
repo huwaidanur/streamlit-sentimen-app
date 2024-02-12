@@ -31,26 +31,12 @@ col_1, col_2 = st.columns([1, 3])
 with col_1 :
     # foto
     with st.container():
-        secrets_path = os.path.abspath(os.path.join("..", ".streamlit", "secrets.toml"))
+        nama_file = 'foto_formal.png'
+        folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app\file\img'
 
-        # Membaca konfigurasi dari file secrets.toml
-        with open(secrets_path, "r") as f:
-            config = toml.load(f)
-
-        # Menentukan path image dari konfigurasi
-        path_configuration = config.get("path_configuration", {})
-        path_image = path_configuration.get("path_image", "")
-
-        # Mendapatkan path lengkap ke file gambar
-        img_path = os.path.abspath(os.path.join("..", "file", "img", "foto_formal.png"))
-
-        # Memeriksa apakah file gambar ada
-        if os.path.exists(img_path):
-            # Menampilkan gambar jika file ada
-            st.image(img_path)
-        else:
-            st.error(f"File gambar '{img_path}' tidak ditemukan.")
-                      
+        file_path = os.path.join(folder_path, nama_file)
+        st.image(file_path)
+                   
     with st.container(height=20, border=False):
         pass
 
