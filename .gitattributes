@@ -4,11 +4,9 @@ train_model.ipynb filter=lfs diff=lfs merge=lfs -text
 *.joblib filter=lfs diff=lfs merge=lfs -text
 *.pkl filter=lfs diff=lfs merge=lfs -text
 data_app/Lib/site-packages/nlp_id/data/*.pkl filter=lfs diff=lfs merge=lfs -text
-
 # File-model
 app/random_forest_model.joblib filter=lfs diff=lfs merge=lfs -text
 app/random_forest_model.pkl filter=lfs diff=lfs merge=lfs -text
-
 # File data
 data_app/Lib/site-packages/joblib/test/data/joblib_0.10.0_pickle_py27_np17.pkl filter=lfs diff=lfs merge=lfs -text
 data_app/Lib/site-packages/joblib/test/data/joblib_0.10.0_pickle_py33_np18.pkl filter=lfs diff=lfs merge=lfs -text
@@ -39,3 +37,5 @@ data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-cbrt.csv f
 data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-cos.csv filter=lfs diff=lfs merge=lfs -text
 data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-cosh.csv filter=lfs diff=lfs merge=lfs -text
 data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-exp.csv filter=lfs diff=l
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
