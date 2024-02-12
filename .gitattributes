@@ -1,0 +1,41 @@
+*.ipynb filter=lfs diff=lfs merge=lfs -text
+train_model.ipynb filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.joblib filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/nlp_id/data/*.pkl filter=lfs diff=lfs merge=lfs -text
+
+# File-model
+app/random_forest_model.joblib filter=lfs diff=lfs merge=lfs -text
+app/random_forest_model.pkl filter=lfs diff=lfs merge=lfs -text
+
+# File data
+data_app/Lib/site-packages/joblib/test/data/joblib_0.10.0_pickle_py27_np17.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.10.0_pickle_py33_np18.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.10.0_pickle_py34_np19.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.10.0_pickle_py35_np19.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.11.0_pickle_py36_np111.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.9.2_pickle_py27_np16.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.9.2_pickle_py27_np17.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.9.2_pickle_py33_np18.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.9.2_pickle_py34_np19.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/joblib/test/data/joblib_0.9.2_pickle_py35_np19.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/matplotlib/backends/web_backend/nbagg_uat.ipynb filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/matplotlib/mpl-data/sample_data/Stocks.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/matplotlib/mpl-data/sample_data/data_x_x2_x3.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/matplotlib/mpl-data/sample_data/msft.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/nlp_id/data/postagger_v9.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/nlp_id/data/postagger_v9.pklbnj3p7x_.tmp filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/nlp_id/data/postagger_v9.pklo8clh7cb.tmp filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/astype_copy.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/numpy_2_0_array.pkl filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-arccos.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-arccosh.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-arcsin.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-arcsinh.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-arctan.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-arctanh.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-cbrt.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-cos.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-cosh.csv filter=lfs diff=lfs merge=lfs -text
+data_app/Lib/site-packages/numpy/core/tests/data/umath-validation-set-exp.csv filter=lfs diff=l
