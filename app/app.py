@@ -84,9 +84,11 @@ file_path = os.path.join(current_directory, 'random_forest_model.joblib')
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
 #csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/baru.csv'
 data = pd.read_csv(csv_url)
+st.write(data)
 data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
 st.write(data.columns)
 st.dataframe(data)
+st.write(data)
 print(data.info())
  
 options = ["Overview","All Data", "Positive", "Negative"]
