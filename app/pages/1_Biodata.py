@@ -35,7 +35,9 @@ with col_1 :
         folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app\file\img'
 
         file_path = os.path.join(folder_path, nama_file)
-        st.image(file_path)
+        #st.image(file_path)
+        image_path = img_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/file/img/foto_formal.png'
+        st.image(image_path)
                    
     with st.container(height=20, border=False):
         pass

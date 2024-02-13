@@ -46,8 +46,9 @@ nama_file = 'data_scraping_kampanye.csv'
 folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
 
 file_path = os.path.join(folder_path, nama_file)
-data = pd.read_csv(file_path)
-
+#data = pd.read_csv(file_path)
+csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
+data = pd.read_csv(csv_url)
 from sklearn.feature_extraction.text import TfidfVectorizer
 from joblib import load, dump
 
@@ -76,10 +77,13 @@ current_directory = os.path.dirname(__file__)
 # Membuat path ke file random_forest_model.joblib
 file_path = os.path.join(current_directory, 'random_forest_model.joblib')
 
-prediksi_label(data)
-data.to_csv('data_scraping_kampanye_prediksi.csv')
-print('data hasil prediksi berhasil disimpan')
+#prediksi_label(data)
+#data.to_csv('data_scraping_kampanye_prediksi.csv')
+#print('data hasil prediksi berhasil disimpan')
  
+csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
+
+data = pd.read_csv(csv_url)
 data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
 print(data.columns)
 print(data.info())
