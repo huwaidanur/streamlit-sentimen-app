@@ -224,7 +224,7 @@ elif selected_option == "All Data":
         col1, col2 = st.columns([50, 50])
         with col1:
             df_ = data[['label', 'tweet']]
-            st.dataframe(df_)
+            st.write(df_)
         with col2:
             #tv.plot_wordcloud(data)
             all_tokens = ' '.join(data['cleaned_token'])
