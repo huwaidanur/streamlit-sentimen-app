@@ -112,8 +112,8 @@ if selected_option == "Overview":
                 bargap=0.1,
                 title_x=0.5,
                 title_font_size=30,
-                width=800,
-                height=800)
+                width=500,
+                height=500)
             st.plotly_chart(fig, use_container_width=False)
 
         with col2:
@@ -126,7 +126,7 @@ if selected_option == "Overview":
                         template='plotly', width=300, height=300)
             fig.update_traces(marker=dict(line=dict(width=2, color='Black')), showlegend=False)
             fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',
-                            title_x=0.5, title_font_size=30, width=800, height=800, template='seaborn')
+                            title_x=0.5, title_font_size=30, width=500, height=500, template='seaborn')
             st.plotly_chart(fig, use_container_width=False)
 
     st.divider()
@@ -172,6 +172,7 @@ elif selected_option == "All Data":
         with col2:
             #tv = TextVisual()
             #tv.plot_top_words(data)
+            data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
             word_counts = Counter(data['cleaned_tweet'].str.split().sum())
             top_10_words = dict(word_counts.most_common(10))
             # = '#24d6e3'
@@ -187,12 +188,14 @@ elif selected_option == "All Data":
                 yaxis_title='Word',
                 title_x=0.5,
                 title_font_size=20,
+                width=500, height=500,
                 xaxis=dict(type='category'),
                 template='seaborn')
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)  # Untuk membuat urutan bar dari atas ke bawah
             
         with col3:
+            data['cleaned_token'] = data['cleaned_token'].astype(str)
             all_tokens = [token for sublist in data['cleaned_token'].str.split() for token in sublist]
             #tv.plot_top_bigrams(data)
             bigram_counts = Counter(bigrams(all_tokens))
@@ -207,20 +210,20 @@ elif selected_option == "All Data":
                 plot_bgcolor='white',
                 title='Top 10 Most Common Bigrams',
                 xaxis_title='Frequency',
-                yaxis_title='Bigram',
+                yaxis_title='Bigram',width=500, height=500,
                 yaxis=dict(autorange="reversed"), template='seaborn')  # Untuk membuat urutan bar dari atas ke bawah
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True) 
         
         # row 2 dari 2
-        col1, col2 = st.columns([60, 40])
+        col1, col2 = st.columns([50, 50])
         with col1:
             df_ = data[['label', 'tweet']]
             st.dataframe(df_)
         with col2:
             #tv.plot_wordcloud(data)
             all_tokens = ' '.join(data['cleaned_token'])
-            wordcloud = WordCloud(width=400, height=400, background_color='white').generate(all_tokens)
+            wordcloud = WordCloud(width=500, height=500, background_color='white').generate(all_tokens)
             # = '#24d6e3'
             fig = go.Figure(go.Image(z=wordcloud.to_array()))
 
@@ -277,6 +280,7 @@ elif selected_option == "Positive":
             st.plotly_chart(fig, theme=None, use_container_width=True)   
         # Display top words and top bigrams
         with col2:
+            positive_data['cleaned_tweet'] = positive_data['cleaned_tweet'].astype(str)
             word_counts = Counter(positive_data['cleaned_tweet'].str.split().sum())
             top_10_words = dict(word_counts.most_common(10))
             # = '#24d6e3'
@@ -293,6 +297,7 @@ elif selected_option == "Positive":
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)
         with col3:
+            positive_data['cleaned_tweet'] = positive_data['cleaned_tweet'].astype(str)
             all_tokens = [token for sublist in positive_data['cleaned_token'].str.split() for token in sublist]
             #tv.plot_top_bigrams(data)
             bigram_counts = Counter(bigrams(all_tokens))
@@ -378,6 +383,7 @@ elif selected_option == "Negative":
         # Display top words and top bigrams
             
         with col2:
+            negative_data['cleaned_tweet'] = negative_data['cleaned_tweet'].astype(str)
             word_counts = Counter(negative_data['cleaned_tweet'].str.split().sum())
             top_10_words = dict(word_counts.most_common(10))
             # = '#24d6e3'
@@ -395,6 +401,7 @@ elif selected_option == "Negative":
             st.plotly_chart(fig, theme=None, use_container_width=True)
 
         with col3:
+            negative_data['cleaned_token'] = negative_data['cleaned_token'].astype(str)
             all_tokens = [token for sublist in negative_data['cleaned_token'].str.split() for token in sublist]
             #tv.plot_top_bigrams(data)
             bigram_counts = Counter(bigrams(all_tokens))
