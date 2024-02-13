@@ -86,6 +86,7 @@ csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/m
 data = pd.read_csv(csv_url)
 data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
 st.write(data.columns)
+st.dataframe(data)
 print(data.info())
 
 options = ["Overview","All Data", "Positive", "Negative"]
