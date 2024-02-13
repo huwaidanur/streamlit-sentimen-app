@@ -36,7 +36,7 @@ with col_1 :
 
         file_path = os.path.join(folder_path, nama_file)
         #st.image(file_path)
-        image_path = img_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/file/img/foto_formal.png'
+        image_path = img_url = 'https://github.com/huwaidanur/streamlit-sentimen-app/raw/master/app/file/img/foto_imut.jpeg'
         st.image(image_path)
                    
     with st.container(height=20, border=False):

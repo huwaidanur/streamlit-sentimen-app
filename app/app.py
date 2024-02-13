@@ -171,7 +171,7 @@ elif selected_option == "All Data":
             data_pie_chart = [trace]
             # = '#24d6e3'
             fig = go.Figure(data=data_pie_chart)
-            fig.update_layout(template="plotly_dark", title='Distributin Sentiment', title_font_size=20, title_x=0.2)
+            fig.update_layout(template="plotly_dark", title='Sentiment Distribution', title_font_size=20, title_x=0.2)
             st.plotly_chart(fig, theme=None, use_container_width=True)   
         with col2:
             #tv = TextVisual()
@@ -189,7 +189,6 @@ elif selected_option == "All Data":
                 plot_bgcolor='white',
                 title='Top 10 Most Common Words',
                 xaxis_title='Frequency',
-                yaxis_title='Word',
                 title_x=0.5,
                 title_font_size=20,
                 width=500, height=500,
@@ -215,8 +214,7 @@ elif selected_option == "All Data":
                 title='Top 10 Most Common Bigrams',
                 title_x=0.5,
                 title_font_size=20,
-                xaxis_title='Frequency',
-                yaxis_title='Bigram',width=500, height=500,
+                xaxis_title='Frequency',width=500, height=500,
                 yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True) 
@@ -286,7 +284,7 @@ elif selected_option == "Positive":
             data_pie_chart = [trace]
             fig = go.Figure(data=data_pie_chart)
             fig.update_layout(template="plotly_dark",
-                              title='Distributin Sentimnent', 
+                              title='Sentiment Distribution', 
                               title_font_size=20, title_x=0.5)
             st.plotly_chart(fig, theme=None, use_container_width=True)   
         # Display top words and top bigrams
@@ -300,7 +298,6 @@ elif selected_option == "Positive":
                 plot_bgcolor='white',
                 title='Top 10 Most Common Words',
                 xaxis_title='Frequency',
-                yaxis_title='Word',
                 title_x=0.5,
                 title_font_size=20,width=500,height=500,
                 xaxis=dict(type='category'),
@@ -324,7 +321,6 @@ elif selected_option == "Positive":
                 title='Top 10 Most Common Bigrams',
                 title_font_size=20,title_x=0.5,
                 xaxis_title='Frequency',
-                yaxis_title='Bigram',
                 yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True) 
@@ -411,7 +407,6 @@ elif selected_option == "Negative":
                 width=500,height=500,
                 title='Top 10 Most Common Words',
                 xaxis_title='Frequency',
-                yaxis_title='Word',
                 title_x=0.5,
                 title_font_size=20,
                 xaxis=dict(type='category'),
@@ -437,7 +432,6 @@ elif selected_option == "Negative":
                 width=500,height=500,
                 title='Top 10 Most Common Bigrams',
                 xaxis_title='Frequency',
-                yaxis_title='Bigram',
                 yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)  
