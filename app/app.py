@@ -103,7 +103,7 @@ if selected_option == "Overview":
         with col1:
             data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
             word_lengths = data['cleaned_tweet'].str.len()
-            st.write(word_lengths)
+            st.dataframe(word_lengths)
             # = '#24d6e3'
             fig = go.Figure(data=[go.Histogram(x=word_lengths)])
             
