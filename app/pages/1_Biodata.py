@@ -184,20 +184,3 @@ with col_2:
                         Sekretaris KAMIKU
                         ''')
 
-''' 
-st.secrets.load_config("D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app\pages.streamlit\secrets.toml")
-img_path = st.secrets.path_configuration['path_image']
-berkas_foto = 'foto_formal.png'
-st.image(image=f'{img_path}{berkas_foto}') 
-
-current_directory = os.getcwd()
-secrets_path = os.path.join(current_directory, "app", "pages.streamlit", "secrets.toml")
-#st.secrets["path_configuration"] = st.secrets(secrets_path)
-st.secrets.load_config_file(secrets_path)
-path_configuration = st.secrets["path_configuration"]
-path_image = path_configuration["path_image"]
-#img_path = st.secrets.path_configuration['path_image']
-#berkas_foto = 'foto_formal.png'
-berkas_foto = 'foto_formal.png'
-st.image(image=f'{path_image}{berkas_foto}') 
-'''
