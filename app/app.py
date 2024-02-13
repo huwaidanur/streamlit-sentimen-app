@@ -99,7 +99,7 @@ if selected_option == "Overview":
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     with st.container():
         # row 1 dari 1 
-        col1, col2 = st.columns([50, 50])
+        col1, col2 = st.columns([60, 40])
         with col1:
             data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
             word_lengths = data['cleaned_tweet'].str.len()
@@ -129,7 +129,7 @@ if selected_option == "Overview":
                         template='plotly', width=300, height=300)
             fig.update_traces(marker=dict(line=dict(width=2, color='Black')), showlegend=False)
             fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',
-                            title_x=0.5, title_font_size=30, width=500, height=500, template='seaborn')
+                            title_x=0.5, title_font_size=30, width=500, height=500)
             st.plotly_chart(fig, use_container_width=False)
 
     st.divider()
@@ -156,7 +156,7 @@ elif selected_option == "All Data":
         )
         st.subheader('All Sentiment Data')
         # row 1 dari 2
-        col1, col2, col3 = st.columns([30, 30, 30])
+        col1, col2, col3 = st.columns([28, 34, 38])
         with col1:
             #data_pie_counts = data['label'].value_counts()
             labels = data['label'].value_counts().index.tolist()
@@ -194,7 +194,7 @@ elif selected_option == "All Data":
                 title_font_size=20,
                 width=500, height=500,
                 xaxis=dict(type='category'),
-                template='seaborn')
+                )
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)  # Untuk membuat urutan bar dari atas ke bawah
             
@@ -217,12 +217,12 @@ elif selected_option == "All Data":
                 title_font_size=20,
                 xaxis_title='Frequency',
                 yaxis_title='Bigram',width=500, height=500,
-                yaxis=dict(autorange="reversed"), template='seaborn')  # Untuk membuat urutan bar dari atas ke bawah
+                yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True) 
         
         # row 2 dari 2
-        col1, col2 = st.columns([50, 50])
+        col1, col2 = st.columns([60, 40])
         with col1:
             df_ = data[['label', 'tweet']]
             st.write(df_)
@@ -239,7 +239,7 @@ elif selected_option == "All Data":
                 title_font_size=20,
                 title_x=0.5,width=500,height=500,
                 xaxis=dict(visible=False),
-                yaxis=dict(visible=False), template='seaborn')
+                yaxis=dict(visible=False))
             # Menampilkan wordcloud
             st.plotly_chart(fig, theme=None, use_container_width=True) 
 
@@ -271,7 +271,7 @@ elif selected_option == "Positive":
         st.subheader('Positive Sentiment Data')
         # Plot pie chart for sentiment distribution
         # row 1 dari 2
-        col1, col2, col3 = st.columns([30, 30, 30])
+        col1, col2, col3 = st.columns([28, 34, 38])
         with col1:
             #data_pie_counts = data['label'].value_counts()
             labels = positive_data['label'].value_counts().index.tolist()
@@ -304,7 +304,7 @@ elif selected_option == "Positive":
                 title_x=0.5,
                 title_font_size=20,width=500,height=500,
                 xaxis=dict(type='category'),
-                template='seaborn')
+                )
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)
         with col3:
@@ -377,7 +377,7 @@ elif selected_option == "Negative":
         st.subheader('Negative Sentiment Data')
         # Plot pie chart for sentiment distribution
         # row 1 dari 2
-        col1, col2, col3 = st.columns([30, 30, 30])
+        col1, col2, col3 = st.columns([28, 34, 38])
         with col1:
             #data_pie_counts = data['label'].value_counts()
             labels = negative_data['label'].value_counts().index.tolist()
@@ -415,7 +415,7 @@ elif selected_option == "Negative":
                 title_x=0.5,
                 title_font_size=20,
                 xaxis=dict(type='category'),
-                template='seaborn')
+                )
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)
 
@@ -456,7 +456,7 @@ elif selected_option == "Negative":
             fig.update_layout(
                 title='Wordcloud',
                 title_font_size=20,
-                weight=500,height=500,
+                width=500,height=500,
                 title_x=0.5,
                 xaxis=dict(visible=False),
                 yaxis=dict(visible=False))
