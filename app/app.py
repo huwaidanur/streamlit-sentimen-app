@@ -96,13 +96,14 @@ if selected_option == "Overview":
 # KONTAINER PERTAMA 
 # = '#24d6e3'
     data = pd.read_csv(csv_url)
-    #data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
+    data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     with st.container():
         # row 1 dari 1 
         col1, col2 = st.columns([50, 50])
         with col1:
             data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
             word_lengths = data['cleaned_tweet'].str.len()
+            st.write(word_lengths)
             # = '#24d6e3'
             fig = go.Figure(data=[go.Histogram(x=word_lengths)])
             
