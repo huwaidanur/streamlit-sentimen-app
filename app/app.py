@@ -48,7 +48,7 @@ folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
 file_path = os.path.join(folder_path, nama_file)
 #data = pd.read_csv(file_path)
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
-data = pd.read_csv(csv_url)
+#data = pd.read_csv(csv_url)
 #from sklearn.feature_extraction.text import TfidfVectorizer
 #from joblib import load, dump
 
@@ -95,7 +95,8 @@ if selected_option == "Overview":
 # =============================================================================================
 # KONTAINER PERTAMA 
 # = '#24d6e3'
-    data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
+    data = pd.read_csv(csv_url)
+    #data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     with st.container():
         # row 1 dari 1 
         col1, col2 = st.columns([50, 50])
@@ -136,6 +137,7 @@ elif selected_option == "All Data":
 # =============================================================================================
 # KONTAINER KEDUA // ALL DATA =============================================================================================
 # = '#24d6e3'
+    data = pd.read_csv(csv_url)
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     color = '#3ecaed'
     with st.container():
@@ -243,6 +245,7 @@ elif selected_option == "All Data":
 elif selected_option == "Positive":
 # =============================================================================================
 # KONTAINER KETIGA // POSITIVE =============================================================================================
+    data = pd.read_csv(csv_url)
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     positive_data = data[data['label'] == 'positif']
     data_visual_p = pd.DataFrame(positive_data['cleaned_token'])
@@ -343,6 +346,7 @@ elif selected_option == "Positive":
 elif selected_option == "Negative":
 # =============================================================================================
 # KONTAINER KEEMPAT // NEGATIVE =============================================================================================
+    data = pd.read_csv(csv_url)
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     negative_data = data[data['label'] == 'negatif']
     negative_data = pd.DataFrame(negative_data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
