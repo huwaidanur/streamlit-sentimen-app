@@ -49,8 +49,8 @@ file_path = os.path.join(folder_path, nama_file)
 #data = pd.read_csv(file_path)
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
 data = pd.read_csv(csv_url)
-from sklearn.feature_extraction.text import TfidfVectorizer
-from joblib import load, dump
+#from sklearn.feature_extraction.text import TfidfVectorizer
+#from joblib import load, dump
 
 
 # ubah dari pickle ke joblin
@@ -60,14 +60,14 @@ from joblib import load, dump
 
 # lakukan
 # prediksi 
-def prediksi_label(data):
-    model = load('random_forest_model.joblib')
-    X = data['cleaned_tweet']
-    vectorizer = TfidfVectorizer(max_features = 500)
-    X_vector = vectorizer.fit_transform(X).toarray()
-    prediksi = model.predict(X_vector)
-    data['label'] = prediksi
-    return data
+#def prediksi_label(data):
+#    model = load('random_forest_model.joblib')
+#    X = data['cleaned_tweet']
+    #vectorizer = TfidfVectorizer(max_features = 500)
+    #X_vector = vectorizer.fit_transform(X).toarray()
+    #prediksi = model.predict(X_vector)
+    #data['label'] = prediksi
+    #return data
 
 import os
 
