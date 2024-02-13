@@ -345,7 +345,7 @@ elif selected_option == "Negative":
 # KONTAINER KEEMPAT // NEGATIVE =============================================================================================
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     negative_data = data[data['label'] == 'negatif']
-    data_visual_ne = pd.DataFrame(negative_data['cleaned_token'])
+    negative_data = pd.DataFrame(negative_data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     color = '#f2b13f'
     with st.container():
         st.markdown(
@@ -384,7 +384,9 @@ elif selected_option == "Negative":
             
         with col2:
             negative_data['cleaned_tweet'] = negative_data['cleaned_tweet'].astype(str)
-            word_counts = Counter(negative_data['cleaned_tweet'].str.split().sum())
+            #word_counts = Counter(negative_data['cleaned_tweet'].str.split().sum())
+            words = negative_data['cleaned_tweet'].str.split().sum()
+            word_counts = Counter(words)
             top_10_words = dict(word_counts.most_common(10))
             # = '#24d6e3'
             fig = go.Figure(data=[go.Bar(y=list(top_10_words.keys()), x=list(top_10_words.values()), orientation='h')])
