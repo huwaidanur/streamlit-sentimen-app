@@ -125,10 +125,10 @@ if selected_option == "Overview":
             data_pie.columns = ['label', 'count']
             # = '#24d6e3'
             fig = px.bar(data_pie, x='label', y='count', color='label',
-                        title='Sentiment',yaxis_title='Frequency', labels={'label': 'Labels', 'count': 'Counts'},
+                        title='Sentiment', labels={'label': 'Labels', 'count': 'Counts'},
                         template='plotly', width=300, height=300)
             fig.update_traces(marker=dict(line=dict(width=2, color='Black')), showlegend=False)
-            fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',
+            fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',yaxis_title='Frequency',
                             title_x=0.5, title_font_size=30, width=500, height=500)
             st.plotly_chart(fig, use_container_width=False)
 
