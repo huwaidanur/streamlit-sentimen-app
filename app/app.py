@@ -237,7 +237,7 @@ elif selected_option == "All Data":
             fig.update_layout(
                 title='Wordcloud',
                 title_font_size=20,
-                title_x=0.5,width=500,heigth=500,
+                title_x=0.5,width=500,height=500,
                 xaxis=dict(visible=False),
                 yaxis=dict(visible=False), template='seaborn')
             # Menampilkan wordcloud
