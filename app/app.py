@@ -88,7 +88,7 @@ data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'l
 st.write(data.columns)
 st.dataframe(data)
 print(data.info())
-
+ 
 options = ["Overview","All Data", "Positive", "Negative"]
 selected_option = st.selectbox("Pilih", options)
 
