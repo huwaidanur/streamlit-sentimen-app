@@ -109,9 +109,9 @@ if selected_option == "Overview":
             fig = go.Figure(data=[go.Histogram(x=word_lengths)])
             
             fig.update_layout(
-                title='Jumlah Kata per Tweet',
-                xaxis_title=' Jumlah Kata',
-                yaxis_title='Frekuensi',
+                title='Number of Words per Tweet',
+                xaxis_title=' Word Count',
+                yaxis_title='Frequency',
                 bargap=0.1,
                 title_x=0.2,
                 title_font_size=30,
@@ -125,7 +125,7 @@ if selected_option == "Overview":
             data_pie.columns = ['label', 'count']
             # = '#24d6e3'
             fig = px.bar(data_pie, x='label', y='count', color='label',
-                        title='Sentiment', labels={'label': 'Labels', 'count': 'Counts'},
+                        title='Sentiment',yaxis_title='Frequency', labels={'label': 'Labels', 'count': 'Counts'},
                         template='plotly', width=300, height=300)
             fig.update_traces(marker=dict(line=dict(width=2, color='Black')), showlegend=False)
             fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',
