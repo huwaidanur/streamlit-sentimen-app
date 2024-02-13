@@ -84,12 +84,9 @@ file_path = os.path.join(current_directory, 'random_forest_model.joblib')
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
 #csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/baru.csv'
 data = pd.read_csv(csv_url)
-st.write(data)
+
 data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
-st.write(data.columns)
-st.dataframe(data)
-st.write(data)
-print(data.info())
+
  
 options = ["Overview","All Data", "Positive", "Negative"]
 selected_option = st.selectbox("Pilih", options)
@@ -107,7 +104,7 @@ if selected_option == "Overview":
             data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
             word_lengths = data['cleaned_tweet'].str.len()
             word_lengths_df = pd.DataFrame({'word_lengths': word_lengths})
-            st.dataframe(word_lengths)
+            #st.dataframe(word_lengths)
             # = '#24d6e3'
             fig = go.Figure(data=[go.Histogram(x=word_lengths)])
             
@@ -116,7 +113,7 @@ if selected_option == "Overview":
                 xaxis_title=' Jumlah Kata',
                 yaxis_title='Frekuensi',
                 bargap=0.1,
-                title_x=0.5,
+                title_x=0.2,
                 title_font_size=30,
                 width=500,
                 height=500)
@@ -159,7 +156,7 @@ elif selected_option == "All Data":
         )
         st.subheader('All Sentiment Data')
         # row 1 dari 2
-        col1, col2, col3 = st.columns([28, 34, 38])
+        col1, col2, col3 = st.columns([30, 30, 30])
         with col1:
             #data_pie_counts = data['label'].value_counts()
             labels = data['label'].value_counts().index.tolist()
@@ -174,7 +171,7 @@ elif selected_option == "All Data":
             data_pie_chart = [trace]
             # = '#24d6e3'
             fig = go.Figure(data=data_pie_chart)
-            fig.update_layout(template="plotly_dark")
+            fig.update_layout(template="plotly_dark", title='Distributin Sentiment', title_font_size=20, title_x=0.2)
             st.plotly_chart(fig, theme=None, use_container_width=True)   
         with col2:
             #tv = TextVisual()
@@ -216,6 +213,8 @@ elif selected_option == "All Data":
             fig.update_layout(
                 plot_bgcolor='white',
                 title='Top 10 Most Common Bigrams',
+                title_x=0.5,
+                title_font_size=20,
                 xaxis_title='Frequency',
                 yaxis_title='Bigram',width=500, height=500,
                 yaxis=dict(autorange="reversed"), template='seaborn')  # Untuk membuat urutan bar dari atas ke bawah
@@ -237,6 +236,8 @@ elif selected_option == "All Data":
             # Mengatur layout plot
             fig.update_layout(
                 title='Wordcloud',
+                title_font_size=20,
+                title_x=0.5,width=500,heigth=500,
                 xaxis=dict(visible=False),
                 yaxis=dict(visible=False), template='seaborn')
             # Menampilkan wordcloud
@@ -270,7 +271,7 @@ elif selected_option == "Positive":
         st.subheader('Positive Sentiment Data')
         # Plot pie chart for sentiment distribution
         # row 1 dari 2
-        col1, col2, col3 = st.columns([28, 34, 38])
+        col1, col2, col3 = st.columns([30, 30, 30])
         with col1:
             #data_pie_counts = data['label'].value_counts()
             labels = positive_data['label'].value_counts().index.tolist()
@@ -284,7 +285,9 @@ elif selected_option == "Positive":
                         )   
             data_pie_chart = [trace]
             fig = go.Figure(data=data_pie_chart)
-            fig.update_layout(template="plotly_dark")
+            fig.update_layout(template="plotly_dark",
+                              title='Distributin Sentimnent', 
+                              title_font_size=20, title_x=0.5)
             st.plotly_chart(fig, theme=None, use_container_width=True)   
         # Display top words and top bigrams
         with col2:
@@ -299,7 +302,7 @@ elif selected_option == "Positive":
                 xaxis_title='Frequency',
                 yaxis_title='Word',
                 title_x=0.5,
-                title_font_size=20,
+                title_font_size=20,width=500,height=500,
                 xaxis=dict(type='category'),
                 template='seaborn')
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
@@ -317,8 +320,9 @@ elif selected_option == "Positive":
                 orientation='h'))
             # Mengatur layout plot
             fig.update_layout(
-                plot_bgcolor='white',
+                plot_bgcolor='white',width=500,height=500,
                 title='Top 10 Most Common Bigrams',
+                title_font_size=20,title_x=0.5,
                 xaxis_title='Frequency',
                 yaxis_title='Bigram',
                 yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
@@ -338,6 +342,8 @@ elif selected_option == "Positive":
             # Mengatur layout plot
             fig.update_layout(
                 title='Wordcloud',
+                title_font_size=20,title_x=0.5,
+                width=500,height=500,
                 xaxis=dict(visible=False),
                 yaxis=dict(visible=False))
             # Menampilkan wordcloud
@@ -371,7 +377,7 @@ elif selected_option == "Negative":
         st.subheader('Negative Sentiment Data')
         # Plot pie chart for sentiment distribution
         # row 1 dari 2
-        col1, col2, col3 = st.columns([28, 34, 38])
+        col1, col2, col3 = st.columns([30, 30, 30])
         with col1:
             #data_pie_counts = data['label'].value_counts()
             labels = negative_data['label'].value_counts().index.tolist()
@@ -385,6 +391,7 @@ elif selected_option == "Negative":
             # = '#24d6e3'
             fig = go.Figure(data=data_pie_chart)
             fig.update_layout(template="plotly_dark",
+                title_font_size=20,
                 title='Sentiment Distribution',
                 title_x=0.5)
                             
@@ -401,6 +408,7 @@ elif selected_option == "Negative":
             fig = go.Figure(data=[go.Bar(y=list(top_10_words.keys()), x=list(top_10_words.values()), orientation='h')])
             fig.update_layout(
                 plot_bgcolor='white',
+                width=500,height=500,
                 title='Top 10 Most Common Words',
                 xaxis_title='Frequency',
                 yaxis_title='Word',
@@ -425,6 +433,8 @@ elif selected_option == "Negative":
             # Mengatur layout plot
             fig.update_layout(
                 plot_bgcolor='white',
+                title_font_size=20,title_x=0.5,
+                width=500,height=500,
                 title='Top 10 Most Common Bigrams',
                 xaxis_title='Frequency',
                 yaxis_title='Bigram',
@@ -445,6 +455,9 @@ elif selected_option == "Negative":
             # Mengatur layout plot
             fig.update_layout(
                 title='Wordcloud',
+                title_font_size=20,
+                weight=500,height=500,
+                title_x=0.5,
                 xaxis=dict(visible=False),
                 yaxis=dict(visible=False))
             # Menampilkan wordcloud
