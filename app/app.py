@@ -13,22 +13,10 @@ from nltk.probability import FreqDist
 import plotly.express as px
 import plotly.graph_objs as go
 
-st.set_page_config(page_title="Portofolio Data Science", layout='wide')
-st.title("My Streamlit App")
+st.set_page_config(page_title="Portfolio Data Science", layout='wide')
+st.title("Streamlit Sentiment Analysis App")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 st.write("Welcome to my Streamlit app! This is a sentiment analysis project of tweets related to the 2024 Campaign in Indonesia")
-
-  
-if st.button("Topik : Kampanye"):
-    st.write("Mari lihat sentimen terkait kampanye!")
-
-    ''' 
-    Sentiment analysis related to trending topics on the Twitter platform aims to understand user responses 
-    and interactions regarding the 2024 Campaign topic in Indonesia. This project is carried out with the hope of 
-    providing readers with insights into public opinion by observing trend results and changing perceptions that are occurring.
-
-    '''
-
 
 nama_file = 'data_scraping_kampanye.csv'
 folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
@@ -36,26 +24,6 @@ folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
 file_path = os.path.join(folder_path, nama_file)
 #data = pd.read_csv(file_path)
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
-#data = pd.read_csv(csv_url)
-#from sklearn.feature_extraction.text import TfidfVectorizer
-#from joblib import load, dump
-
-
-# ubah dari pickle ke joblin
-#model_pkl = load('random_forest_model.pkl')
-
-#dump(model_pkl, 'random_forest_model.joblib')
-
-# lakukan
-# prediksi 
-#def prediksi_label(data):
-#    model = load('random_forest_model.joblib')
-#    X = data['cleaned_tweet']
-    #vectorizer = TfidfVectorizer(max_features = 500)
-    #X_vector = vectorizer.fit_transform(X).toarray()
-    #prediksi = model.predict(X_vector)
-    #data['label'] = prediksi
-    #return data
 
 import os
 
@@ -64,10 +32,6 @@ current_directory = os.path.dirname(__file__)
 
 # Membuat path ke file random_forest_model.joblib
 file_path = os.path.join(current_directory, 'random_forest_model.joblib')
-
-#prediksi_label(data)
-#data.to_csv('data_scraping_kampanye_prediksi.csv')
-#print('data hasil prediksi berhasil disimpan')
  
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
 #csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/baru.csv'
@@ -77,7 +41,7 @@ data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'l
 
  
 options = ["Overview","All Data", "Positive", "Negative"]
-selected_option = st.selectbox("Pilih", options)
+selected_option = st.selectbox("Pilih", options, width = 100)
 
 if selected_option == "Overview":
 # =============================================================================================
