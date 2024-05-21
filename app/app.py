@@ -10,34 +10,22 @@ from collections import Counter
 from wordcloud import WordCloud
 from nltk.probability import FreqDist
 
-#from utama import Utama
-#from text_processing import TextProcessing
-#from predict_sentiment import PredictSentiment
-#from sklearn.feature_extraction.text import CountVectorizer
-
 import plotly.express as px
 import plotly.graph_objs as go
 
-#import seaborn as sns
-#import matplotlib.pyplot as plt
-
-#tp = TextProcessing()
-#ps = PredictSentiment()
-#u = Utama()
-# Set page title
 st.set_page_config(page_title="Portofolio Data Science", layout='wide')
 st.title("My Streamlit App")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
-st.write("Welcome to my Streamlit app! Di sini kamu bisa melihat hasil analisis sentimen Twitter")
+st.write("Welcome to my Streamlit app! This is a sentiment analysis project of tweets related to the 2024 Campaign in Indonesia")
 
   
 if st.button("Topik : Kampanye"):
     st.write("Mari lihat sentimen terkait kampanye!")
 
     ''' 
-    Analisis sentimen terkait trending topik di platform twitter bertujuan untuk memahami respon dan interaksi pengguna 
-    terkait topik tertentu. Proyek ini dilakukan dengan harapan dapat memberi wawasan kepada pembaca mengenai opini publik 
-    dengan membaca hasil tren dan perubahan persepsi yang sedang terjadi. 
+    Sentiment analysis related to trending topics on the Twitter platform aims to understand user responses 
+    and interactions regarding the 2024 Campaign topic in Indonesia. This project is carried out with the hope of 
+    providing readers with insights into public opinion by observing trend results and changing perceptions that are occurring.
 
     '''
 

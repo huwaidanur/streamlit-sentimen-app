@@ -44,31 +44,29 @@ with col_1 :
 
     # biodata
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Biodata</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Personal Information</p>'
         st.markdown(original_title, unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Tanggal Lahir : 6 Frbruari 2002 </p>', unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Kota Asal: Bekasi </p>', unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Alamat: Teluk Pucung </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Address : Bekasi, Indonesia </p>', unsafe_allow_html=True)
 
     with st.container(height=30, border=False):
         pass
 
     # kemampuan bahasa
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Kemampuan Bahasa</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Language Proficiency</p>'
         st.markdown(original_title, unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Indonesia : Ahli </p>', unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Inggris: Ahli </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Indonesia : Native </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Inggris: Intermediate </p>', unsafe_allow_html=True)
 
     with st.container(height=30, border=False):
         pass
 
     # teknologi yang dikuasai
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Skill</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Soft Skills</p>'
         st.markdown(original_title, unsafe_allow_html=True)
         teks='''
-        public speaking, analytical thinking, communication, 
+        Effective Communication, Problem-Solving, Critical Thinking, Collaboration, Teamwork
         '''
         st.markdown(f'<p style="font-family:Courier; color:White; font-size: 14px;">{teks}</p>', unsafe_allow_html=True)
 
@@ -81,10 +79,10 @@ with col_2:
     with st.container():
         st.header("Huwaida Nur Asysyifa Mufarrida")
         teks='''
-        Seorang lulusan fisika yang antusias dan bersemangat untuk menerapkan keterampilan analitis dan pemecahan masalah dalam lingkungan bisnis. 
-        Dengan latar belakang pendidikan yang kuat dalam fisika, saya memiliki pemahaman mendalam tentang analisis data dan statistik. 
-        Selain itu, penguasaan saya dalam pemrograman khususnya python dan keahlian dalam menggunakan berbagai alat analisis data membuat saya siap 
-        untuk menjadi seorang data scientist ataupun data analyst yang produktif.
+        A fresh graduate with a Bachelor of Science degree in Physics from Bandung Institute of Technology (ITB), 
+        demonstrating a strong passion and dedication. Proficient in data analysis, statistical modeling, and computational physics. 
+        Capable in Python programming, Data Wrangling, Machine Learning, and Natural Language Processing. 
+        Aspiring to utilize analytical prowess and academic foundation as a data scientist or data analyst, adding value to data-driven decision-making in a dynamic setting.
         '''
         st.write(teks)
     
@@ -101,9 +99,9 @@ with col_2:
             col_1.text('2019-2023')
             col_2.text(
                     ''' 
-                    INSTITUT TEKNOLOGI BANDUNG
-                    FAKULTAS MATEMATIKA DAN PENGETAHUAN ALAM
-                    S1 FISIKA
+                    BANDUNG INSTITUTE OF TECHNOLOGY (ITB)
+                    FACULTY OF MATHEMATICS AND NATURAL SCIENCES
+                    Bachelor's Degree in Physics
                     '''
                         )
     with st.container(height=30, border=False):
@@ -113,19 +111,31 @@ with col_2:
 
     # pendidikan tambahan
     with st.container():
-        st.header('Pendidikan Kursus Tambahan /Sertifikat')
+        st.header('Certifications and Training')
         with st.container():
             col_0, col_1, col_2 = st.columns([2,10,40])
-            col_1.text('2023-sekarang')
+            col_1.text('Oct 2023 - Feb 2024')
             col_2.text(
                     ''' 
                     Full Stack Data Science SanberCampus x ITB
                     '''
                         )
-            col_1.text('sekarang-')
+            col_1.text('April 2024')
             col_2.text(
                     ''' 
-                    IBM Data Analyst
+                    IBM Exploratory Data Analysis for Machine Learning
+                    '''
+                        )
+            col_1.text('Mar 2024')
+            col_2.text(
+                    ''' 
+                    IBM Supervised Machine Learning : Regression 
+                    '''
+                        )
+            col_1.text('Mar 2024')
+            col_2.text(
+                    ''' 
+                    IBM Supervised Machine Learning : Classification 
                     '''
                         )
     with st.container(height=30, border=False):
@@ -135,25 +145,25 @@ with col_2:
 
     # pengalaman Akademis
     with st.container():
-        st.header('Pengalaman Akademis')
+        st.header('Work Experience')
         with st.container():
             col_0, col_1, col_2 = st.columns([3,10,40])
-            col_1.text('2021')
+            col_1.text('Aug 2022 - Dec 2022')
             col_2.text(
                     ''' 
-                    Asisten Laboratorium Fisika Dasar
+                    Elementary Physics Grader Assistant | Bandung Institute of Technology (ITB)
                     '''
                         )
-            col_1.text('2022')
+            col_1.text('Nov 2022')
             col_2.text(
                     ''' 
-                    Asisten Grader Fisika Dasar
+                    Research Intern | Korea Advanced Institute of Science and Technology (KAIST)
                     '''
                         )
-            col_1.text('2022')
+            col_1.text('Aug 2022 - Dec 2021')
             col_2.text(
                     ''' 
-                    Student Exchange (Internship Program) ke Korean Advanced of Science and Technology (KAIST)
+                    Physics Laboratory Assistant | Bandung Institute of Technology (ITB)
                     '''
                         )
         
@@ -164,23 +174,21 @@ with col_2:
 
     # pengalaman organisasi
     with st.container():
-        st.header('Pengalaman Organisasi')
+        st.header('Activities')
         with st.container():
             col_0, col_1, col_2 = st.columns([3, 10, 40])
 
             # Memberikan teks pada kolom-kolom tersebut
-            col_1.text('2020')
+            col_1.text('Nov 2020 - Nov 2021')
             col_2.text('''
-                        Wakil Ketua Pelaksana Penerimaan Mahasiswa Baru (PMB) GAMAIS ITB (online)
+                        Secretary | Kuningan Student Community (KAMIKU ITB)
+
                         ''')
 
-            col_1.text('2020')
+            col_1.text('Apr 2020 - Jul 2021')
             col_2.text('''
-                        Wakil Ketua Divisi Event Organizer P3RI 1442H
+                        Head of Event Organizer Division | Festival Adha P3RI 1442H (Salman ITB)
                         ''')
 
-            col_1.text('2020-2021')
-            col_2.text('''
-                        Sekretaris KAMIKU
-                        ''')
+
 
