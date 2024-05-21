@@ -118,32 +118,24 @@ with col_2:
             col_2.markdown(
                     ''' 
                     Full Stack Data Science SanberCampus x ITB
-
-                    [link] (https://icecenter.itb.ac.id/tutor-certificate/?cert_hash=ce4b51a6098f3c5b)
                     '''
                         )    
             col_1.text('May 2024')
-            col_2.text(
+            col_2.markdown(
                     ''' 
                     IBM Exploratory Data Analysis for Machine Learning
-
-                    [link] (https://www.coursera.org/account/accomplishments/verify/MKM7PW7GMQC3)
                     '''
                         )
             col_1.text('May 2024')
             col_2.text(
                     ''' 
                     IBM Supervised Machine Learning : Regression 
-
-                    [link] (https://www.coursera.org/account/accomplishments/verify/QUPSPT3QM6SQ)
                     '''
                         )
             col_1.text('May 2024')
             col_2.text(
                     ''' 
                     IBM Supervised Machine Learning : Classification 
-
-                    [link] (https://www.coursera.org/account/accomplishments/verify/UYLGRYKJLZ8M)
                     '''
                         )
     with st.container(height=30, border=False):
