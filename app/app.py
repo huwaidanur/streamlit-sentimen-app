@@ -41,7 +41,7 @@ data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'l
 
  
 options = ["Overview","All Data", "Positive", "Negative"]
-selected_option = st.selectbox("Pilih", options, width = 100)
+selected_option = st.selectbox("Pilih", options)
 
 if selected_option == "Overview":
 # =============================================================================================
@@ -144,7 +144,7 @@ elif selected_option == "All Data":
                 title_x=0.5,
                 title_font_size=20,
                 width=500, height=500,
-                xaxis=dict(type='category'),
+                xaxis=dict(type='category', tickfont=dict(size=20)),
                 )
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)  # Untuk membuat urutan bar dari atas ke bawah

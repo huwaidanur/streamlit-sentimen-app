@@ -96,7 +96,7 @@ with col_2:
         st.header('Pendidikan')
         with st.container():
             col_0, col_1, col_2 = st.columns([1,10,40])
-            col_1.text('2019-2023')
+            col_1.markdown('2019-2023')
             col_2.text(
                     ''' 
                     BANDUNG INSTITUTE OF TECHNOLOGY (ITB)
@@ -114,26 +114,26 @@ with col_2:
         st.header('Certifications and Training')
         with st.container():
             col_0, col_1, col_2 = st.columns([2,10,40])
-            col_1.text('Oct 2023 - Feb 2024')
+            col_1.markdown('Oct 2023 - Feb 2024')
             col_2.markdown(
                     ''' 
                     Full Stack Data Science SanberCampus x ITB
                     '''
                         )    
-            col_1.text('May 2024')
+            col_1.markdown('May 2024')
             col_2.markdown(
                     ''' 
                     IBM Exploratory Data Analysis for Machine Learning
                     '''
                         )
-            col_1.text('May 2024')
-            col_2.text(
+            col_1.markdown('May 2024')
+            col_2.markdown(
                     ''' 
                     IBM Supervised Machine Learning : Regression 
                     '''
                         )
-            col_1.text('May 2024')
-            col_2.text(
+            col_1.markdown('May 2024')
+            col_2.markdown(
                     ''' 
                     IBM Supervised Machine Learning : Classification 
                     '''
@@ -148,20 +148,20 @@ with col_2:
         st.header('Work Experience')
         with st.container():
             col_0, col_1, col_2 = st.columns([3,10,40])
-            col_1.text('Aug 2022 - Dec 2022')
-            col_2.text(
+            col_1.markdown('Aug 2022 - Dec 2022')
+            col_2.markdown(
                     ''' 
                     Elementary Physics Grader Assistant | Bandung Institute of Technology (ITB)
                     '''
                         )
-            col_1.text('Nov 2022')
-            col_2.text(
+            col_1.markdown('Nov 2022')
+            col_2.markdown(
                     ''' 
                     Research Intern | Korea Advanced Institute of Science and Technology (KAIST)
                     '''
                         )
-            col_1.text('Aug 2022 - Dec 2021')
-            col_2.text(
+            col_1.markdown('Aug 2022 - Dec 2021')
+            col_2.markdown(
                     ''' 
                     Physics Laboratory Assistant | Bandung Institute of Technology (ITB)
                     '''
@@ -179,14 +179,14 @@ with col_2:
             col_0, col_1, col_2 = st.columns([3, 10, 40])
 
             # Memberikan teks pada kolom-kolom tersebut
-            col_1.text('Nov 2020 - Nov 2021')
-            col_2.text('''
+            col_1.markdown('Nov 2020 - Nov 2021')
+            col_2.markdown('''
                         Secretary | Kuningan Student Community (KAMIKU ITB)
 
                         ''')
 
-            col_1.text('Apr 2020 - Jul 2021')
-            col_2.text('''
+            col_1.markdown('Apr 2020 - Jul 2021')
+            col_2.markdown('''
                         Head of Event Organizer Division | Festival Adha P3RI 1442H (Salman ITB)
                         ''')
 
