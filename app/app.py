@@ -23,7 +23,7 @@ folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
 
 file_path = os.path.join(folder_path, nama_file)
 #data = pd.read_csv(file_path)
-csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
+#csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
 
 import os
 
@@ -33,8 +33,7 @@ current_directory = os.path.dirname(__file__)
 # Membuat path ke file random_forest_model.joblib
 file_path = os.path.join(current_directory, 'random_forest_model.joblib')
  
-csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
-#csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/baru.csv'
+csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi_clean.csv'
 data = pd.read_csv(csv_url)
 
 data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
@@ -121,31 +120,32 @@ elif selected_option == "All Data":
                         textposition='inside',
                         )   
             data_pie_chart = [trace]
-            # = '#24d6e3'
             fig = go.Figure(data=data_pie_chart)
             fig.update_layout(template="plotly_dark", title='Sentiment Distribution', title_font_size=20, title_x=0.2)
             st.plotly_chart(fig, theme=None, use_container_width=True)   
         with col2:
-            #tv = TextVisual()
-            #tv.plot_top_words(data)
-            data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
-            word_counts = Counter(data['cleaned_tweet'].str.split().sum())
+            # Menghitung frekuensi kemunculan setiap kata
+            all_words = [word for sublist in data["cleaned_token"] for word in sublist if len(word) > 1]
+            word_counts = Counter(all_words)
             top_10_words = dict(word_counts.most_common(10))
-            # = '#24d6e3'
-            fig = go.Figure(data=[go.Bar(y=list(top_10_words.keys()), x=list(top_10_words.values()), orientation='h')])
-            #fig = go.Figure(go.Bar(
-            #   x=word_counts.values,
-            #  y=word_counts.index,
-            # orientation='h'), #=#)
+
+            # Membuat DataFrame dari top 10 kata teratas
+            word_freq = pd.DataFrame(list(top_10_words.items()), columns=['word', 'frequency'])
+
+            # Plotting menggunakan plotly.graph_objs (go)
+            fig = go.Figure(data=[go.Bar(y=word_freq['word'], x=word_freq['frequency'], orientation='h')])
+
+            # Mengatur layout plot
             fig.update_layout(
                 plot_bgcolor='white',
                 title='Top 10 Most Common Words',
                 xaxis_title='Frequency',
                 title_x=0.5,
                 title_font_size=20,
-                width=500, height=500,
+                width=500,
+                height=500,
                 xaxis=dict(type='category', tickfont=dict(size=20)),
-                )
+            )
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)  # Untuk membuat urutan bar dari atas ke bawah
             
