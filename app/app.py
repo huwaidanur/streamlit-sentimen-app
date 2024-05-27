@@ -120,7 +120,7 @@ elif selected_option == "All Data":
         
         # Bar chart untuk kata paling umum
         fig = px.bar(word_freq, x='frequency', y='word', orientation='h', title='Top 10 Most Common Words')
-        fig.update_layout(width=500, height=500, yaxis=dict(tickmode='linear', automargin=True))
+        fig.update_layout(width=500, height=500, yaxis=dict(autorange="reversed", tickmode='linear', automargin=True))
         fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
         st.plotly_chart(fig, theme=None, use_container_width=True)
 
@@ -137,7 +137,7 @@ elif selected_option == "All Data":
 
         # Bar chart untuk bigram paling umum
         fig = px.bar(bigram_freq, x='frequency', y='bigram', orientation='h', title='Top 10 Most Common Bigrams')
-        fig.update_layout(width=500, height=500, yaxis=dict(tickmode='linear', automargin=True))
+        fig.update_layout(width=500, height=500, yaxis=dict(autorange="reversed", tickmode='linear', automargin=True))
         fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
         st.plotly_chart(fig, theme=None, use_container_width=True)
 
@@ -201,7 +201,7 @@ elif selected_option == "Positive":
                               title='Sentiment Distribution', 
                               title_font_size=20, title_x=0.5)
             st.plotly_chart(fig, theme=None, use_container_width=True)   
-        # Display top words and top bigrams
+        
         with col2:
             positive_data['cleaned_tweet'] = positive_data['cleaned_tweet'].astype(str)
             word_counts = Counter(positive_data['cleaned_tweet'].str.split().sum())
@@ -212,7 +212,7 @@ elif selected_option == "Positive":
             
             # Bar chart untuk kata paling umum
             fig = px.bar(word_freq, x='frequency', y='word', orientation='h', title='Top 10 Most Common Words')
-            fig.update_layout(width=500, height=500,yaxis=dict(tickmode='linear', automargin=True))
+            fig.update_layout(width=500, height=500,yaxis=dict(autorange="reversed", tickmode='linear', automargin=True))
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)
 
@@ -226,7 +226,7 @@ elif selected_option == "Positive":
             bigram_freq['bigram'] = bigram_freq['bigram'].apply(lambda x : ' '.join(x))
             
             fig = px.bar(bigram_freq, x='frequency', y='bigram', orientation='h', title='Top 10 Most Common Bigrams')
-            fig.update_layout(width=500,height=500,yaxis=dict(autorange='reversed',tickmode='linear', automargin = True))
+            fig.update_layout(width=500,height=500,yaxis=dict(autorange="reversed", tickmode='linear', automargin = True))
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True) 
         
@@ -298,7 +298,6 @@ elif selected_option == "Negative":
                 title_x=0.5)
                             
             st.plotly_chart(fig, theme=None, use_container_width=True)   
-        # Display top words and top bigrams
             
         with col2:
             negative_data['cleaned_tweet'] = negative_data['cleaned_tweet'].astype(str)
