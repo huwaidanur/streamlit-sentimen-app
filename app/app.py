@@ -18,13 +18,6 @@ st.title("Streamlit Sentiment Analysis App")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 st.write("Welcome to my Streamlit app! This is a sentiment analysis project of tweets related to the 2024 Campaign in Indonesia")
 
-nama_file = 'data_scraping_kampanye.csv'
-folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app'
-
-file_path = os.path.join(folder_path, nama_file)
-#data = pd.read_csv(file_path)
-#csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi.csv'
-
 import os
 
 # Mendapatkan path ke direktori saat ini
@@ -34,11 +27,7 @@ current_directory = os.path.dirname(__file__)
 file_path = os.path.join(current_directory, 'random_forest_model.joblib')
  
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi_clean.csv'
-data = pd.read_csv(csv_url)
 
-data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
-
- 
 options = ["Overview","All Data", "Positive", "Negative"]
 selected_option = st.selectbox("Pilih", options)
 
@@ -90,117 +79,91 @@ elif selected_option == "All Data":
 # =============================================================================================
 # KONTAINER KEDUA // ALL DATA =============================================================================================
 # = '#24d6e3'
+
+# Baca data
     data = pd.read_csv(csv_url)
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
-    color = '#3ecaed'
-    with st.container():
-        st.markdown(
-            """
-            <style>
-                .css-1xkftc2 { /* Kelas untuk kontainer */
-                    width: 800px !important;
-                    height: 1200px !important;
-                }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-        st.subheader('All Sentiment Data')
-        # row 1 dari 2
-        col1, col2, col3 = st.columns([28, 34, 38])
-        with col1:
-            #data_pie_counts = data['label'].value_counts()
-            labels = data['label'].value_counts().index.tolist()
-            values = data['label'].value_counts().tolist()
-            #pd.Series(data_pie.index).tolist()
-            #datavals = pd.Series(data_pie).tolist() 
-            trace=go.Pie(labels=labels,
-                        values=values,
-                        hovertemplate = "%{label}: <br>Value: %{value} ",
-                        textposition='inside',
-                        )   
-            data_pie_chart = [trace]
-            fig = go.Figure(data=data_pie_chart)
-            fig.update_layout(template="plotly_dark", title='Sentiment Distribution', title_font_size=20, title_x=0.2)
-            st.plotly_chart(fig, theme=None, use_container_width=True)   
-        with col2:
-            # Menghitung frekuensi kemunculan setiap kata
-            all_words = [word for sublist in data["cleaned_token"] for word in sublist if len(word) > 1]
-            word_counts = Counter(all_words)
-            top_10_words = dict(word_counts.most_common(10))
 
-            # Membuat DataFrame dari top 10 kata teratas
-            word_freq = pd.DataFrame(list(top_10_words.items()), columns=['word', 'frequency'])
+    # Gaya untuk kontainer
+    st.markdown(
+        """
+        <style>
+            .css-1xkftc2 { /* Kelas untuk kontainer */
+                width: 800px !important;
+                height: 1200px !important;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-            # Plotting menggunakan plotly.graph_objs (go)
-            fig = go.Figure(data=[go.Bar(y=word_freq['word'], x=word_freq['frequency'], orientation='h')])
+    st.subheader('All Sentiment Data')
 
-            # Mengatur layout plot
-            fig.update_layout(
-                plot_bgcolor='white',
-                title='Top 10 Most Common Words',
-                xaxis_title='Frequency',
-                title_x=0.5,
-                title_font_size=20,
-                width=500,
-                height=500,
-                xaxis=dict(type='category', tickfont=dict(size=20)),
-            )
-            fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
-            st.plotly_chart(fig, theme=None, use_container_width=True)  # Untuk membuat urutan bar dari atas ke bawah
-            
-        with col3:
-            data['cleaned_token'] = data['cleaned_token'].astype(str)
-            all_tokens = [token for sublist in data['cleaned_token'].str.split() for token in sublist]
-            #tv.plot_top_bigrams(data)
-            bigram_counts = Counter(bigrams(all_tokens))
-            top_10_bigrams = bigram_counts.most_common(10)
-            # = '#24d6e3'
-            fig = go.Figure(go.Bar(
-                x=[count for bigram, count in top_10_bigrams],
-                y=[" ".join(bigram) for bigram, count in top_10_bigrams],
-                orientation='h'))
-            # Mengatur layout plot
-            fig.update_layout(
-                plot_bgcolor='white',
-                title='Top 10 Most Common Bigrams',
-                title_x=0.5,
-                title_font_size=20,
-                xaxis_title='Frequency',width=500, height=500,
-                yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
-            fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
-            st.plotly_chart(fig, theme=None, use_container_width=True) 
+    # Baris 1 dari 2
+    col1, col2, col3 = st.columns([28, 34, 38])
+
+    with col1:
+        # Pie chart untuk distribusi sentiment
+        sentiment_counts = data['label'].value_counts().reset_index()
+        sentiment_counts.columns = ['label', 'count']
+        fig = px.pie(sentiment_counts, names='label', values='count', title='Sentiment Distribution', template='plotly_dark')
+        st.plotly_chart(fig, theme=None, use_container_width=True)
+
+    with col2:
+        data_ = data.copy()
+        data_['cleaned_tweet'] = data_['cleaned_tweet'].astype(str)
+        word_counts = Counter(data_['cleaned_tweet'].str.split().sum())
+        top_10_words = dict(word_counts.most_common(10))
         
-        # row 2 dari 2
-        col1, col2 = st.columns([60, 40])
-        with col1:
-            df_ = data[['label', 'tweet']]
-            st.write(df_)
-        with col2:
-            #tv.plot_wordcloud(data)
-            all_tokens = ' '.join(data['cleaned_token'])
-            wordcloud = WordCloud(width=500, height=500, background_color='white').generate(all_tokens)
-            # = '#24d6e3'
-            fig = go.Figure(go.Image(z=wordcloud.to_array()))
+        # Membuat DataFrame dari top 10 kata teratas
+        word_freq = pd.DataFrame(list(top_10_words.items()), columns=['word', 'frequency'])
+        
+        # Bar chart untuk kata paling umum
+        fig = px.bar(word_freq, x='frequency', y='word', orientation='h', title='Top 10 Most Common Words')
+        fig.update_layout(width=500, height=500, yaxis=dict(tickmode='linear', automargin=True))
+        fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
+        st.plotly_chart(fig, theme=None, use_container_width=True)
 
-            # Mengatur layout plot
-            fig.update_layout(
-                title='Wordcloud',
-                title_font_size=20,
-                title_x=0.5,width=500,height=500,
-                xaxis=dict(visible=False),
-                yaxis=dict(visible=False))
-            # Menampilkan wordcloud
-            st.plotly_chart(fig, theme=None, use_container_width=True) 
+    with col3:
+        # Menghitung bigram
+        data['cleaned_token'] = data['cleaned_token'].astype(str)
+        all_tokens = [token for sublist in data['cleaned_token'].str.split() for token in sublist]
+        bigram_counts = Counter(bigrams(all_tokens))
+        top_10_bigrams = bigram_counts.most_common(10)
+        
+        # DataFrame untuk bigram
+        bigram_freq = pd.DataFrame(top_10_bigrams, columns=['bigram', 'frequency'])
+        bigram_freq['bigram'] = bigram_freq['bigram'].apply(lambda x: ' '.join(x))
 
-    with st.container(height=30, border=False):
-        pass
+        # Bar chart untuk bigram paling umum
+        fig = px.bar(bigram_freq, x='frequency', y='bigram', orientation='h', title='Top 10 Most Common Bigrams')
+        fig.update_layout(width=500, height=500, yaxis=dict(tickmode='linear', automargin=True))
+        fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
+        st.plotly_chart(fig, theme=None, use_container_width=True)
+
+    # Baris 2 dari 2
+    col1, col2 = st.columns([60, 40])
+
+    with col1:    
+        df_ = data[['label', 'tweet']]
+        st.write(df_)
+
+    with col2:
+        all_tokens = ' '.join(data['cleaned_token'])
+        wordcloud = WordCloud(width=500, height=500, background_color='white').generate(all_tokens)
+        fig = px.imshow(wordcloud.to_array(), title='Wordcloud')
+        fig.update_layout(width=500, height=500, xaxis=dict(visible=False), yaxis=dict(visible=False))
+        st.plotly_chart(fig, theme=None, use_container_width=True)
+
+    # Divider
     st.divider()
+
 
 
 elif selected_option == "Positive":
 # =============================================================================================
 # KONTAINER KETIGA // POSITIVE =============================================================================================
+
     data = pd.read_csv(csv_url)
     data = pd.DataFrame(data, columns=['tweet', 'cleaned_tweet', 'cleaned_token', 'label'])
     positive_data = data[data['label'] == 'positif']
@@ -223,11 +186,10 @@ elif selected_option == "Positive":
         # row 1 dari 2
         col1, col2, col3 = st.columns([28, 34, 38])
         with col1:
-            #data_pie_counts = data['label'].value_counts()
+
             labels = positive_data['label'].value_counts().index.tolist()
             values = positive_data['label'].value_counts().tolist()
-            #pd.Series(data_pie.index).tolist()
-            #datavals = pd.Series(data_pie).tolist() 
+ 
             trace=go.Pie(labels=labels,
                         values=values,
                         hovertemplate = "%{label}: <br>Value: %{value} ",
@@ -244,36 +206,27 @@ elif selected_option == "Positive":
             positive_data['cleaned_tweet'] = positive_data['cleaned_tweet'].astype(str)
             word_counts = Counter(positive_data['cleaned_tweet'].str.split().sum())
             top_10_words = dict(word_counts.most_common(10))
-            # = '#24d6e3'
-            fig = go.Figure(data=[go.Bar(y=list(top_10_words.keys()), x=list(top_10_words.values()), orientation='h')])
-            fig.update_layout(
-                plot_bgcolor='white',
-                title='Top 10 Most Common Words',
-                xaxis_title='Frequency',
-                title_x=0.5,
-                title_font_size=20,width=500,height=500,
-                xaxis=dict(type='category'),
-                )
+            
+            # Membuat DataFrame dari top 10 kata teratas
+            word_freq = pd.DataFrame(list(top_10_words.items()), columns=['word', 'frequency'])
+            
+            # Bar chart untuk kata paling umum
+            fig = px.bar(word_freq, x='frequency', y='word', orientation='h', title='Top 10 Most Common Words')
+            fig.update_layout(width=500, height=500,yaxis=dict(tickmode='linear', automargin=True))
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)
+
         with col3:
-            positive_data['cleaned_tweet'] = positive_data['cleaned_tweet'].astype(str)
+            positive_data['cleaned_token'] = positive_data['cleaned_token'].astype(str)
             all_tokens = [token for sublist in positive_data['cleaned_token'].str.split() for token in sublist]
-            #tv.plot_top_bigrams(data)
             bigram_counts = Counter(bigrams(all_tokens))
             top_10_bigrams = bigram_counts.most_common(10)
-            # = '#24d6e3'
-            fig = go.Figure(go.Bar(
-                x=[count for bigram, count in top_10_bigrams],
-                y=[" ".join(bigram) for bigram, count in top_10_bigrams],
-                orientation='h'))
-            # Mengatur layout plot
-            fig.update_layout(
-                plot_bgcolor='white',width=500,height=500,
-                title='Top 10 Most Common Bigrams',
-                title_font_size=20,title_x=0.5,
-                xaxis_title='Frequency',
-                yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
+
+            bigram_freq = pd.DataFrame(top_10_bigrams, columns=['bigram', 'frequency'])
+            bigram_freq['bigram'] = bigram_freq['bigram'].apply(lambda x : ' '.join(x))
+            
+            fig = px.bar(bigram_freq, x='frequency', y='bigram', orientation='h', title='Top 10 Most Common Bigrams')
+            fig.update_layout(width=500,height=500,yaxis=dict(autorange='reversed',tickmode='linear', automargin = True))
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True) 
         
@@ -281,11 +234,13 @@ elif selected_option == "Positive":
         col1, col2 = st.columns([60, 40])
         with col1:
             df_positif = positive_data[['label', 'tweet']]
-            st.dataframe(df_positif)
+            st.write(df_positif)
+
         with col2:
             all_tokens = ' '.join(positive_data['cleaned_token'])
             wordcloud = WordCloud(width=800, height=800, background_color='white').generate(all_tokens)
-            fig = go.Figure(go.Image(z=wordcloud.to_array()))
+            wordcloud_array = wordcloud.to_array()
+            fig = px.imshow(wordcloud_array, title='Wordcloud')
 
             # Mengatur layout plot
             fig.update_layout(
@@ -299,8 +254,8 @@ elif selected_option == "Positive":
 
     with st.container(height=30, border=False):
         pass
-    st.divider()
 
+    st.divider()
 
 elif selected_option == "Negative":
 # =============================================================================================
@@ -327,7 +282,6 @@ elif selected_option == "Negative":
         # row 1 dari 2
         col1, col2, col3 = st.columns([28, 34, 38])
         with col1:
-            #data_pie_counts = data['label'].value_counts()
             labels = negative_data['label'].value_counts().index.tolist()
             values = negative_data['label'].value_counts().tolist()
             trace=go.Pie(labels=labels,
@@ -348,55 +302,43 @@ elif selected_option == "Negative":
             
         with col2:
             negative_data['cleaned_tweet'] = negative_data['cleaned_tweet'].astype(str)
-            #word_counts = Counter(negative_data['cleaned_tweet'].str.split().sum())
             words = negative_data['cleaned_tweet'].str.split().sum()
             word_counts = Counter(words)
             top_10_words = dict(word_counts.most_common(10))
-            # = '#24d6e3'
-            fig = go.Figure(data=[go.Bar(y=list(top_10_words.keys()), x=list(top_10_words.values()), orientation='h')])
-            fig.update_layout(
-                plot_bgcolor='white',
-                width=500,height=500,
-                title='Top 10 Most Common Words',
-                xaxis_title='Frequency',
-                title_x=0.5,
-                title_font_size=20,
-                xaxis=dict(type='category'),
-                )
+            
+            # Membuat DataFrame dari top 10 kata teratas    
+            word_freq = pd.DataFrame(list(top_10_words.items()), columns=['word', 'frequency'])
+
+            fig = px.bar(word_freq, x='frequency', y='word', orientation='h', title='Top 10 Most Common Words')
+            fig.update_layout(width=500,height=500,yaxis=dict(autorange="reversed", automargin=True))             
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
             st.plotly_chart(fig, theme=None, use_container_width=True)
 
         with col3:
             negative_data['cleaned_token'] = negative_data['cleaned_token'].astype(str)
             all_tokens = [token for sublist in negative_data['cleaned_token'].str.split() for token in sublist]
-            #tv.plot_top_bigrams(data)
             bigram_counts = Counter(bigrams(all_tokens))
             top_10_bigrams = bigram_counts.most_common(10)
-            # = '#24d6e3'
-            fig = go.Figure(go.Bar(
-                x=[count for bigram, count in top_10_bigrams],
-                y=[" ".join(bigram) for bigram, count in top_10_bigrams],
-                orientation='h'))
-            # Mengatur layout plot
-            fig.update_layout(
-                plot_bgcolor='white',
-                title_font_size=20,title_x=0.5,
-                width=500,height=500,
-                title='Top 10 Most Common Bigrams',
-                xaxis_title='Frequency',
-                yaxis=dict(autorange="reversed"))  # Untuk membuat urutan bar dari atas ke bawah
+            # Membuat DataFrame dari top 10 bigram teratas
+            bigram_freq = pd.DataFrame(top_10_bigrams, columns=['bigram', 'frequency'])
+            bigram_freq['bigram'] = bigram_freq['bigram'].apply(lambda x: ' '.join(x))
+
+            fig = px.bar(bigram_freq, x='frequency', y='bigram', orientation='h', title='Top 10 Most Common Bigrams')
+            fig.update_layout(width=500,height=500,yaxis=dict(autorange="reversed", automargin=True))  
             fig.update_traces(hovertemplate="<b>%{y}</b><br>Count=%{x}")
-            st.plotly_chart(fig, theme=None, use_container_width=True)  
+            st.plotly_chart(fig, theme=None, use_container_width=True) 
+
         # row 2 dari 2
         col1, col2 = st.columns([60, 40])
         with col1:
             df_negatif = negative_data[['label', 'tweet']]
             st.write(df_negatif)
+
         with col2:
             all_tokens = ' '.join(negative_data['cleaned_token'])
             wordcloud = WordCloud(width=800, height=800, background_color='white').generate(all_tokens)
-            # = '#24d6e3'
-            fig = go.Figure(go.Image(z=wordcloud.to_array()))
+            wordcloud_image = wordcloud.to_array()
+            fig = px.imshow(wordcloud_image)
 
             # Mengatur layout plot
             fig.update_layout(
