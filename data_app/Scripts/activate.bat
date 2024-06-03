@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\Data Science - Sanbercode\belajar\twitter_sentimen\data_app
+set VIRTUAL_ENV=D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\data_app
 
 if not defined PROMPT set PROMPT=$P$G
 

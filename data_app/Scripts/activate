@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Data Science - Sanbercode\belajar\twitter_sentimen\data_app"
+VIRTUAL_ENV="D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\data_app"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
