@@ -43,26 +43,26 @@ with col_1 :
 
     # biodata
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 30px; font-weight:bold">Personal Information</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Personal Information</p>'
         st.markdown(original_title, unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 25px;">Address : Bekasi, Indonesia </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 15px;">Address : Bekasi, Indonesia </p>', unsafe_allow_html=True)
 
     with st.container(height=30, border=False):
         pass
 
     # kemampuan bahasa
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 30px; font-weight:bold">Language Proficiency</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Language Proficiency</p>'
         st.markdown(original_title, unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 25px;">Indonesia : Native </p>', unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 25px;">Inggris: Intermediate </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 15px;">Indonesia : Native </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 15px;">Inggris: Intermediate </p>', unsafe_allow_html=True)
 
     with st.container(height=30, border=False):
         pass
 
     # teknologi yang dikuasai
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 30px; font-weight:bold">Soft Skills</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Soft Skills</p>'
         st.markdown(original_title, unsafe_allow_html=True)
         teks='''
         Effective Communication, 
@@ -70,7 +70,7 @@ with col_1 :
         Critical Thinking, 
         Collaboration, Teamwork
         '''
-        st.markdown(f'<p style="font-family:Courier; color:White; font-size: 25px;">{teks}</p>', unsafe_allow_html=True)
+        st.markdown(f'<p style="font-family:Courier; color:White; font-size: 15px;">{teks}</p>', unsafe_allow_html=True)
 
     with st.container(height=50, border=False):
         pass
