@@ -10,34 +10,40 @@ st.set_page_config(
     )
 
 # buat halaman cv dengan 2 kolom 
-
-st.markdown(
-    '''
-    <style>
-    div[data-testid="stHorizontalBlock"] > div:first-of-type {
-        background-color: #33C5FF;
-        padding: 20px;
-        font_size: 10px;
-    }
-    </style>
-    ''',
-    unsafe_allow_html=True
-)
-
-
 col_1, col_2 = st.columns([1, 3])
 
 
 with col_1 :
+    st.markdown(
+        '''
+        <style>
+        div[data-testid="stHorizontalBlock"] > div:first-of-type {
+            background-color: #555EB8;
+            padding: 10px;
+        }
+        </style>
+        ''',
+        unsafe_allow_html=True
+    )
     # foto
-    with st.container():
-        nama_file = 'foto_formal.png'
-        folder_path = r'D:\Data Science - Sanbercode\belajar\Twitter_Sentimen_\app\file\img'
+    st.markdown(
+        '''
+        <style>
+        .white-border {
+            border: 7px solid white;
+            border-radius: 5px;
+            padding: 0px;
+        }
+        </style>
+        ''',
+        unsafe_allow_html=True
+    )
 
-        file_path = os.path.join(folder_path, nama_file)
-        #st.image(file_path)
-        image_path = img_url = 'https://github.com/huwaidanur/streamlit-sentimen-app/raw/master/app/file/img/foto_formal.png'
-        st.image(image_path)
+    with st.container() as col:
+ 
+        image_path = 'https://github.com/huwaidanur/streamlit-sentimen-app/raw/master/app/file/img/foto_formal.png'
+        #st.image(image_path)
+        st.markdown(f'<img src="{image_path}" width="300" class="white-border">', unsafe_allow_html=True)
 
     with st.container(height=50, border=False):
         pass                   
@@ -99,7 +105,7 @@ with col_2:
     with st.container():
         st.header('Pendidikan')
         with st.container():
-            col_0, col_1, col_2 = st.columns([1,10,40])
+            col_0,col_1, col_2 = st.columns([1,10,40])
             col_1.markdown('2019-2023')
             col_2.text(
                     ''' 
@@ -117,7 +123,7 @@ with col_2:
     with st.container():
         st.header('Certifications and Training')
         with st.container():
-            col_0, col_1, col_2 = st.columns([2,10,40])
+            col_0, col_1, col_2 = st.columns([1,10,40])
             col_1.markdown('Oct 2023 - Feb 2024')
             col_2.markdown(
                     ''' 
@@ -151,7 +157,7 @@ with col_2:
     with st.container():
         st.header('Work Experience')
         with st.container():
-            col_0, col_1, col_2 = st.columns([3,10,40])
+            col_0, col_1, col_2 = st.columns([1,10,40])
             col_1.markdown('Aug 2022 - Dec 2022')
             col_2.markdown(
                     ''' 
@@ -180,7 +186,7 @@ with col_2:
     with st.container():
         st.header('Activities')
         with st.container():
-            col_0, col_1, col_2 = st.columns([3, 10, 40])
+            col_0, col_1, col_2 = st.columns([1, 10, 40])
 
             # Memberikan teks pada kolom-kolom tersebut
             col_1.markdown('Nov 2020 - Nov 2021')
