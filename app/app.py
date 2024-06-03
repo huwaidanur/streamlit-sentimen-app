@@ -42,7 +42,7 @@ if selected_option == "Overview":
         col1, col2 = st.columns([60, 40])
         with col1:
             data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
-            word_lengths = data['cleaned_tweet'].str.len()
+            word_lengths = data['cleaned_tweet'].str.split().apply(len)
             word_lengths_df = pd.DataFrame({'word_lengths': word_lengths})
             #st.dataframe(word_lengths)
             # = '#24d6e3'
@@ -71,6 +71,7 @@ if selected_option == "Overview":
             fig.update_layout(xaxis=dict(title=None), yaxis=dict(title=None), legend_title_text='Sentiment',yaxis_title='Frequency',
                             title_x=0.5, title_font_size=30, width=500, height=500)
             st.plotly_chart(fig, use_container_width=False)
+            
 
     st.divider()
 
@@ -126,8 +127,8 @@ elif selected_option == "All Data":
 
     with col3:
         # Menghitung bigram
-        data['cleaned_token'] = data['cleaned_token'].astype(str)
-        all_tokens = [token for sublist in data['cleaned_token'].str.split() for token in sublist]
+        data['cleaned_tweet'] = data['cleaned_tweet'].astype(str)
+        all_tokens = [token for sublist in data['cleaned_tweet'].str.split() for token in sublist]
         bigram_counts = Counter(bigrams(all_tokens))
         top_10_bigrams = bigram_counts.most_common(10)
         
@@ -217,8 +218,8 @@ elif selected_option == "Positive":
             st.plotly_chart(fig, theme=None, use_container_width=True)
 
         with col3:
-            positive_data['cleaned_token'] = positive_data['cleaned_token'].astype(str)
-            all_tokens = [token for sublist in positive_data['cleaned_token'].str.split() for token in sublist]
+            positive_data['cleaned_tweet'] = positive_data['cleaned_tweet'].astype(str)
+            all_tokens = [token for sublist in positive_data['cleaned_tweet'].str.split() for token in sublist]
             bigram_counts = Counter(bigrams(all_tokens))
             top_10_bigrams = bigram_counts.most_common(10)
 
@@ -314,8 +315,8 @@ elif selected_option == "Negative":
             st.plotly_chart(fig, theme=None, use_container_width=True)
 
         with col3:
-            negative_data['cleaned_token'] = negative_data['cleaned_token'].astype(str)
-            all_tokens = [token for sublist in negative_data['cleaned_token'].str.split() for token in sublist]
+            negative_data['cleaned_tweet'] = negative_data['cleaned_tweet'].astype(str)
+            all_tokens = [token for sublist in negative_data['cleaned_tweet'].str.split() for token in sublist]
             bigram_counts = Counter(bigrams(all_tokens))
             top_10_bigrams = bigram_counts.most_common(10)
             # Membuat DataFrame dari top 10 bigram teratas
