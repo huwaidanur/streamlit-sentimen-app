@@ -15,8 +15,8 @@ st.markdown(
     '''
     <style>
     div[data-testid="stHorizontalBlock"] > div:first-of-type {
-        background-color: #c49f0c;
-        padding: 10px;
+        background-color: #33C5FF;
+        padding: 20px;
         font_size: 6px;
     }
     </style>
@@ -36,39 +36,41 @@ with col_1 :
 
         file_path = os.path.join(folder_path, nama_file)
         #st.image(file_path)
-        image_path = img_url = 'https://github.com/huwaidanur/streamlit-sentimen-app/raw/master/app/file/img/foto_imut.jpeg'
+        image_path = img_url = 'https://github.com/huwaidanur/streamlit-sentimen-app/raw/master/app/file/img/foto_formal.png'
         st.image(image_path)
                    
-    with st.container(height=20, border=False):
-        pass
+
 
     # biodata
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Personal Information</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 30px; font-weight:bold">Personal Information</p>'
         st.markdown(original_title, unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Address : Bekasi, Indonesia </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 25px;">Address : Bekasi, Indonesia </p>', unsafe_allow_html=True)
 
     with st.container(height=30, border=False):
         pass
 
     # kemampuan bahasa
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Language Proficiency</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 30px; font-weight:bold">Language Proficiency</p>'
         st.markdown(original_title, unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Indonesia : Native </p>', unsafe_allow_html=True)
-        st.markdown('<p style="font-family:Courier; color:White; font-size: 16px;">Inggris: Intermediate </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 25px;">Indonesia : Native </p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-family:Courier; color:White; font-size: 25px;">Inggris: Intermediate </p>', unsafe_allow_html=True)
 
     with st.container(height=30, border=False):
         pass
 
     # teknologi yang dikuasai
     with st.container():
-        original_title = '<p style="font-family:Courier; color:White; font-size: 20px; font-weight:bold">Soft Skills</p>'
+        original_title = '<p style="font-family:Courier; color:White; font-size: 30px; font-weight:bold">Soft Skills</p>'
         st.markdown(original_title, unsafe_allow_html=True)
         teks='''
-        Effective Communication, Problem-Solving, Critical Thinking, Collaboration, Teamwork
+        Effective Communication, 
+        Problem-Solving, 
+        Critical Thinking, 
+        Collaboration, Teamwork
         '''
-        st.markdown(f'<p style="font-family:Courier; color:White; font-size: 14px;">{teks}</p>', unsafe_allow_html=True)
+        st.markdown(f'<p style="font-family:Courier; color:White; font-size: 25px;">{teks}</p>', unsafe_allow_html=True)
 
     with st.container(height=50, border=False):
         pass
