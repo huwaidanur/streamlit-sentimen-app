@@ -29,7 +29,7 @@ file_path = os.path.join(current_directory, 'random_forest_model.joblib')
 csv_url = 'https://raw.githubusercontent.com/huwaidanur/streamlit-sentimen-app/master/app/data_scraping_kampanye_prediksi_clean.csv'
 
 options = ["Overview","All Data", "Positive", "Negative"]
-selected_option = st.selectbox("Pilih", options)
+selected_option = st.selectbox("Choose", options)
 
 if selected_option == "Overview":
 # =============================================================================================
@@ -149,7 +149,7 @@ elif selected_option == "All Data":
         st.write(df_)
 
     with col2:
-        all_tokens = ' '.join(data['cleaned_token'])
+        all_tokens = ' '.join(data['cleaned_tweet'])
         wordcloud = WordCloud(width=500, height=500, background_color='white').generate(all_tokens)
         fig = px.imshow(wordcloud.to_array(), title='Wordcloud')
         fig.update_layout(width=500, height=500, xaxis=dict(visible=False), yaxis=dict(visible=False))
