@@ -17,7 +17,7 @@ st.markdown(
     div[data-testid="stHorizontalBlock"] > div:first-of-type {
         background-color: #33C5FF;
         padding: 20px;
-        font_size: 6px;
+        font_size: 10px;
     }
     </style>
     ''',
@@ -38,7 +38,9 @@ with col_1 :
         #st.image(file_path)
         image_path = img_url = 'https://github.com/huwaidanur/streamlit-sentimen-app/raw/master/app/file/img/foto_formal.png'
         st.image(image_path)
-                   
+
+    with st.container(height=50, border=False):
+        pass                   
 
 
     # biodata
@@ -88,7 +90,7 @@ with col_2:
         '''
         st.write(teks)
     
-    with st.container(height=30, border=False):
+    with st.container(height=10, border=False):
         pass
     
     st.divider()
@@ -106,7 +108,7 @@ with col_2:
                     Bachelor's Degree in Physics
                     '''
                         )
-    with st.container(height=30, border=False):
+    with st.container(height=10, border=False):
         pass        
     st.divider()
 
@@ -140,7 +142,7 @@ with col_2:
                     IBM Supervised Machine Learning : Classification 
                     '''
                         )
-    with st.container(height=30, border=False):
+    with st.container(height=10, border=False):
         pass       
     st.divider()
 
@@ -169,7 +171,7 @@ with col_2:
                     '''
                         )
         
-    with st.container(height=30, border=False):
+    with st.container(height=10, border=False):
         pass       
     st.divider()
 
